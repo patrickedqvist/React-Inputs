@@ -80,3 +80,11 @@ test('InputNumeric should change className', () => {
   wrapper.setProps({ className: 'my-input' });
   expect(wrapper.hasClass('my-input')).toEqual(true);
 });
+
+test('InputNumeric should not change value if it is disabled', () => {
+  const onChange = jest.fn();
+  const wrapper = shallow(<InputNumeric onChange={onChange} disabled />);
+  wrapper.find('input').simulate('change', { target: { value: 'Hello World!' }});
+  expect(wrapper.state('value')).toEqual('');
+  expect(onChange).toHaveBeenCalledTimes(0);
+});
