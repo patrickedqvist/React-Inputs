@@ -1,7 +1,10 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
-class InputText extends PureComponent {
+// Helpers
+import { toNumericValue } from '../helpers/format';
+
+class InputNumeric extends PureComponent {
 
   constructor(props) {
     super(props);
@@ -24,7 +27,7 @@ class InputText extends PureComponent {
     if ( this.props.disabled ) {
       return false;
     }
-
+    
     const value = event.target.value;
     this.setState(
       () => ({ value }),
@@ -55,7 +58,7 @@ class InputText extends PureComponent {
           type="text"
           id={this.props.name}
           name={this.props.name}
-          value={this.props.value}
+          value={toNumericValue(this.props.value)}
           placeholder={this.props.placeholder}
           onChange={this.handleOnChange}
           onFocus={this.handleOnFocus}
@@ -69,13 +72,13 @@ class InputText extends PureComponent {
 }
 
 
-InputText.defaultProps = {
+InputNumeric.defaultProps = {
   label: '',
   value: '',
   defaultValue: '',
   name: '',
   placeholder: '',
-  className: 'form-group form-group--InputText',
+  className: 'form-group form-group--InputNumeric',
   error: '',
   disabled: false,
   onChange: () => {},
@@ -83,10 +86,16 @@ InputText.defaultProps = {
   onBlur: () => {}
 };
 
-InputText.propTypes = {
+InputNumeric.propTypes = {
   label: PropTypes.string,
-  value: PropTypes.string,
-  defaultValue: PropTypes.string,
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
+  defaultValue: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
   name: PropTypes.string,
   placeholder: PropTypes.string,
   className: PropTypes.string,
@@ -97,4 +106,4 @@ InputText.propTypes = {
   onBlur: PropTypes.func
 }
 
-export default InputText;
+export default InputNumeric;
