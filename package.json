@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "babel src --ignore __tests__ --out-dir ./dist",
-    "prepublish": "yarn run build",
+    "prepare": "yarn run build",
     "test": "jest --watch --env=jsdom"
   },
   "author": "Patrick Edqvist",
