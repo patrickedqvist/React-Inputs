@@ -1,6 +1,6 @@
 {
-  "name": "react-bootstrap-inputs",
-  "version": "0.0.1",
+  "name": "react-simple-inputs",
+  "version": "0.0.4",
   "description": "A set of React Input Components for ease of use",
   "main": "index.js",
   "scripts": {
