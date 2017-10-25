@@ -10,6 +10,16 @@
   },
   "author": "Patrick Edqvist",
   "license": "MIT",
+  "keywords": ["react", "inputs"],
+  "homepage": "https://github.com/patrickedqvist/react-simple-inputs",
+  "bugs": {
+    "url": "https://github.com/patrickedqvist/react-simple-inputs/issues",
+    "email": "patrick.edqvist@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/patrickedqvist/react-simple-inputs.git"
+  },
   "peerDependencies": {
     "react": "^16.0.0",
     "react-dom": "^16.0.0"
