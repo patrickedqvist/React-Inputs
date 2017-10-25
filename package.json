@@ -1,6 +1,6 @@
 {
   "name": "react-simple-inputs",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A set of React Input Components for ease of use",
   "main": "index.js",
   "scripts": {
