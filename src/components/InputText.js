@@ -68,7 +68,7 @@ InputText.defaultProps = {
   defaultValue: '',
   name: '',
   placeholder: '',
-  className: 'form-group form-group--InputText form-again',
+  className: 'form-group form-group--InputText',
   error: '',
   disabled: false,
   onChange: () => {},

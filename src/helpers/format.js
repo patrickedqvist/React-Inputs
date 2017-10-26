@@ -7,7 +7,7 @@ export const toNumericValue = value => {
     return '';
   }
 
-  if (!isNumeric(value)) {
+  if (!isNumeric( parseInt(value, 10) )) {
     return '';
   }
 

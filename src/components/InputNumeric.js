@@ -71,7 +71,7 @@ InputNumeric.defaultProps = {
   defaultValue: '',
   name: '',
   placeholder: '',
-  className: 'form-group form-group--InputNumeric myform',
+  className: 'form-group form-group--InputNumeric',
   error: '',
   disabled: false,
   onChange: () => {},
