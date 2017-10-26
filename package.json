@@ -10,7 +10,10 @@
   },
   "author": "Patrick Edqvist",
   "license": "MIT",
-  "keywords": ["react", "inputs"],
+  "keywords": [
+    "react",
+    "inputs"
+  ],
   "homepage": "https://github.com/patrickedqvist/react-simple-inputs",
   "bugs": {
     "url": "https://github.com/patrickedqvist/react-simple-inputs/issues",

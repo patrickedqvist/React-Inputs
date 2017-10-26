@@ -23,16 +23,9 @@ class InputNumeric extends PureComponent {
   }
 
   handleOnChange(event) {
-
-    if ( this.props.disabled ) {
-      return false;
-    }
-    
     const value = event.target.value;
-    this.setState(
-      () => ({ value }),
-      () => this.props.onChange(event)
-    );
+    this.setState({ value });
+    this.props.onChange(event);
   }
 
   handleOnFocus(event) {
@@ -58,7 +51,7 @@ class InputNumeric extends PureComponent {
           type="text"
           id={this.props.name}
           name={this.props.name}
-          value={toNumericValue(this.props.value)}
+          value={toNumericValue(this.state.value)}
           placeholder={this.props.placeholder}
           onChange={this.handleOnChange}
           onFocus={this.handleOnFocus}
@@ -78,7 +71,7 @@ InputNumeric.defaultProps = {
   defaultValue: '',
   name: '',
   placeholder: '',
-  className: 'form-group form-group--InputNumeric',
+  className: 'form-group form-group--InputNumeric myform',
   error: '',
   disabled: false,
   onChange: () => {},

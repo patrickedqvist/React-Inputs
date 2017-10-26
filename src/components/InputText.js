@@ -20,16 +20,9 @@ class InputText extends PureComponent {
   }
 
   handleOnChange(event) {
-
-    if ( this.props.disabled ) {
-      return false;
-    }
-
     const value = event.target.value;
-    this.setState(
-      () => ({ value }),
-      () => this.props.onChange(event)
-    );
+    this.setState({ value });
+    this.props.onChange(event)
   }
 
   handleOnFocus(event) {
@@ -55,7 +48,7 @@ class InputText extends PureComponent {
           type="text"
           id={this.props.name}
           name={this.props.name}
-          value={this.props.value}
+          value={this.state.value}
           placeholder={this.props.placeholder}
           onChange={this.handleOnChange}
           onFocus={this.handleOnFocus}
@@ -75,7 +68,7 @@ InputText.defaultProps = {
   defaultValue: '',
   name: '',
   placeholder: '',
-  className: 'form-group form-group--InputText',
+  className: 'form-group form-group--InputText form-again',
   error: '',
   disabled: false,
   onChange: () => {},
