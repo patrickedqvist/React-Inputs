@@ -2,14 +2,15 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 // Helpers
-import { toNumericValue } from '../helpers/format';
+import { toRawValue, toNumericValue } from '../helpers/format';
 
 class InputNumeric extends PureComponent {
 
   constructor(props) {
     super(props);
     this.state = {
-      value: props.defaultValue && !props.value ? props.defaultValue : props.value
+      rawValue: toRawValue(props.value, props.isDecimal),
+      displayValue: toNumericValue(props.value, props.isDecimal),
     }
     this.handleOnChange = this.handleOnChange.bind(this);
     this.handleOnFocus = this.handleOnFocus.bind(this);
@@ -23,9 +24,16 @@ class InputNumeric extends PureComponent {
   }
 
   handleOnChange(event) {
-    const value = event.target.value;
-    this.setState({ value });
-    this.props.onChange(event);
+    const { value } = event.target;
+
+    this.setState({
+      rawValue: toRawValue(value, this.props.isDecimal),
+      displayValue: toNumericValue(toRawValue(value, this.props.isDecimal), this.props.isDecimal),
+    });
+
+    // Allow clearing of field to be valid input.
+    const rawValue = value === '' ? '' : toRawValue(value, this.props.isDecimal);
+    this.props.onChange(rawValue);
   }
 
   handleOnFocus(event) {
@@ -51,7 +59,7 @@ class InputNumeric extends PureComponent {
           type="text"
           id={this.props.name}
           name={this.props.name}
-          value={toNumericValue(this.state.value)}
+          value={this.state.displayValue}
           placeholder={this.props.placeholder}
           onChange={this.handleOnChange}
           onFocus={this.handleOnFocus}
@@ -74,6 +82,7 @@ InputNumeric.defaultProps = {
   className: 'form-group form-group--InputNumeric',
   error: '',
   disabled: false,
+  isDecimal: false,
   onChange: () => {},
   onFocus: () => {},
   onBlur: () => {}
@@ -94,6 +103,7 @@ InputNumeric.propTypes = {
   className: PropTypes.string,
   error: PropTypes.string,
   disabled: PropTypes.bool,
+  isDecimal: PropTypes.bool,
   onChange: PropTypes.func,
   onFocus: PropTypes.func,
   onBlur: PropTypes.func
