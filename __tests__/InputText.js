@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 
 // Component
-import InputText from '../../src/components/InputText';
+import InputText from '../src/components/InputText';
 
 test('InputText should render', () => {
   const wrapper = shallow(<InputText />);
@@ -70,21 +70,9 @@ test('InputText should render error if error prop is present', () => {
   expect(wrapper.find('span').text()).toEqual('Input Error');
 });
 
-test('InputText should have its default className', () => {
-  const wrapper = shallow(<InputText />);
-  expect(wrapper.hasClass('form-group form-group--InputText')).toEqual(true);
-});
 
 test('InputText should change className', () => {
   const wrapper = shallow(<InputText />);
   wrapper.setProps({ className: 'my-input' });
   expect(wrapper.hasClass('my-input')).toEqual(true);
-});
-
-test('InputText should not change value if it is disabled', () => {
-  const onChange = jest.fn();
-  const wrapper = shallow(<InputText onChange={onChange} disabled />);
-  wrapper.find('input').simulate('change', { target: { value: 'Hello World!' }});
-  expect(wrapper.state('value')).toEqual('');
-  expect(onChange).toHaveBeenCalledTimes(0);
 });
